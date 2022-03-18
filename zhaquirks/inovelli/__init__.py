@@ -1,5 +1,7 @@
 """Module for Inovelli quirks implementations."""
 
+import asyncio
+import time
 import zigpy.types as t
 from zigpy.quirks import CustomCluster
 from zhaquirks.const import (
@@ -17,8 +19,6 @@ from zhaquirks.const import (
     COMMAND,
     COMMAND_PRESS,
     COMMAND_RELEASE,
-    COMMAND_ON,
-    COMMAND_OFF,
     COMMAND_HOLD,
     COMMAND_DOUBLE,
     COMMAND_TRIPLE,
@@ -60,6 +60,7 @@ ON = "Up"
 OFF = "Down"
 CONFIG = "Config"
 
+
 class ButtonPressQueue:
     """Inovelli button queue to derive multiple press events."""
 
@@ -95,6 +96,7 @@ class ButtonPressQueue:
             self._click_counter += 1
         self._ms_last_click = now_ms
         self._task = asyncio.ensure_future(self._job())
+
 
 class Inovelli_VZM31SN_Cluster(CustomCluster):
 
@@ -210,6 +212,7 @@ class Inovelli_VZM31SN_Cluster(CustomCluster):
 
             self.listener_event(ZHA_SEND_EVENT, action, event_args)
             return
+
 
 INOVELLI_AUTOMATION_TRIGGERS = {
     (COMMAND_PRESS, ON): {COMMAND: f"{BUTTON_2}_{COMMAND_PRESS}"},

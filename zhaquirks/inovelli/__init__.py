@@ -195,6 +195,7 @@ class InovelliCluster(CustomCluster):
             self.listener_event(ZHA_SEND_EVENT, action, event_args)
             return
 
+
 class InovelliVZM30SNCluster(InovelliCluster):
     """Inovelli VZM30-SN custom cluster."""
 
@@ -269,6 +270,7 @@ class InovelliVZM30SNCluster(InovelliCluster):
             0x0106: ("disable_clear_notifications_double_tap", t.Bool, True),
         }
     )
+
 
 class InovelliVZM31SNCluster(InovelliCluster):
     """Inovelli VZM31-SN custom cluster."""

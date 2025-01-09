@@ -1,4 +1,5 @@
 """VZM30-SN Switch."""
+
 """Configuration entities need to:"""
 """zha/zha/application/platforms/number/__init__.py"""
 
@@ -16,10 +17,7 @@ from zigpy.zcl.clusters.general import (
     Scenes,
 )
 from zigpy.zcl.clusters.homeautomation import Diagnostic, ElectricalMeasurement
-from zigpy.zcl.clusters.measurement import (
-    TemperatureMeasurement,
-    RelativeHumidity
-)
+from zigpy.zcl.clusters.measurement import RelativeHumidity, TemperatureMeasurement
 from zigpy.zcl.clusters.smartenergy import Metering
 
 from zhaquirks.const import (
@@ -30,11 +28,11 @@ from zhaquirks.const import (
     OUTPUT_CLUSTERS,
     PROFILE_ID,
 )
-
 from zhaquirks.inovelli import INOVELLI_AUTOMATION_TRIGGERS, InovelliVZM30SNCluster
 
 INOVELLI_VZM30SN_CLUSTER_ID = 64561
 WWAH_CLUSTER_ID = 64599
+
 
 class InovelliVZM30SNv1(CustomDevice):
     """VZM30-SN mmWave Dimmer Switch."""
@@ -142,10 +140,7 @@ class InovelliVZM30SNv1(CustomDevice):
             3: {
                 PROFILE_ID: zha.PROFILE_ID,
                 DEVICE_TYPE: DeviceType.DIMMER_SWITCH,
-                INPUT_CLUSTERS: [
-                    Basic.cluster_id,
-                    Identify.cluster_id
-                ],
+                INPUT_CLUSTERS: [Basic.cluster_id, Identify.cluster_id],
                 OUTPUT_CLUSTERS: [
                     Identify.cluster_id,
                     OnOff.cluster_id,
@@ -175,6 +170,7 @@ class InovelliVZM30SNv1(CustomDevice):
     }
 
     device_automation_triggers = INOVELLI_AUTOMATION_TRIGGERS
+
 
 class InovelliVZM30SNv2(CustomDevice):
     """VZM30-SN mmWave Dimmer Switch."""

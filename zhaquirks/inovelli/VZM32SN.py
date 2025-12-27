@@ -411,6 +411,16 @@ MMWAVE_CLUSTER_ID = 0xFC32
         translation_key="mmwave_detect_sensitivity",
         fallback_name="mmWave detect sensitivity",
     )
+  .number(
+        "mmwave_stay_life",
+        MMWAVE_CLUSTER_ID,
+        min_value=0,
+        max_value=4294967295,
+        step=1,
+        entity_type=EntityType.CONFIG,
+        translation_key="mmwave_stay_life",
+        fallback_name="mmWave stay life",
+    )
     .number(
         "mmwave_detect_trigger",
         MMWAVE_CLUSTER_ID,
